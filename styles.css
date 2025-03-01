@@ -1,0 +1,148 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ffe6f0, #ff99cc);
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Default styles (desktop) */
+.password-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+    width: 90%;
+    max-width: 500px;
+}
+
+.top-image {
+    width: 400px; /* Larger square container width */
+    height: 400px; /* Larger square container height (1:1 aspect ratio) */
+    border-radius: 15px; /* Slightly rounded corners for a cute look */
+    border: 3px solid #ff69b4;
+    object-fit: cover; /* Crops the image to fit the container while maintaining aspect ratio */
+    object-position: center; /* Centers the crop */
+}
+
+h1 {
+    color: #ff69b4;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    font-size: 2rem;
+}
+
+.keypad-section {
+    margin: 20px 0;
+}
+
+#pin-display {
+    font-size: 1.2rem;
+    color: #ff69b4;
+    margin-bottom: 10px;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.key {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #ff69b4;
+    border-radius: 50%; /* Circular buttons like in your image */
+    background-color: white;
+    color: #ff69b4;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.key:hover {
+    transform: scale(1.05);
+    background-color: #ff69b4;
+    color: white;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between Clear and Enter buttons */
+    margin-top: 10px;
+}
+
+.clear-btn, .enter-btn {
+    padding: 10px 20px;
+    background-color: #ff69b4;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    text-decoration: none; /* Remove default link underline for .enter-btn */
+    display: inline-block; /* Ensure .enter-btn behaves like a button */
+}
+
+.clear-btn:hover, .enter-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Media Query for Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .password-container {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        margin: 20px auto;
+        padding: 20px;
+        width: 90%;
+        max-width: 350px;
+    }
+
+    .top-image {
+        width: 100%; /* Full width of container on mobile */
+        height: 100%; /* Maintain 1:1 aspect ratio */
+        max-width: 300px; /* Cap to prevent overflow */
+        max-height: 300px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .keypad {
+        grid-template-columns: repeat(3, 50px); /* Smaller buttons for mobile */
+        gap: 8px;
+    }
+
+    .key {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .button-row {
+        flex-direction: row; /* Ensure buttons stay side by side on mobile */
+        gap: 10px; /* Slightly smaller gap on mobile */
+    }
+
+    .clear-btn, .enter-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    #pin-display {
+        font-size: 1rem;
+    }
+}

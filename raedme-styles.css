@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; /* Modern, clean font */
+    background: linear-gradient(135deg, #ffddf1, #ff99cc); /* Softer, modern pink gradient */
+    min-height: 100vh;
+    color: #333;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Secret note container */
+#secret-note {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Headings */
+h1 {
+    color: #ff69b4; /* Bright pink for a cute, modern look */
+    text-shadow: 1px 1px 4px rgba(255, 105, 180, 0.3);
+    font-weight: 600;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Note content */
+.note-content {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+    transition: transform 0.3s ease;
+    text-align: left;
+    color: #ff1493;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.note-content:hover {
+    transform: translateY(-5px);
+}
+
+.note-content strong {
+    color: #ff69b4;
+    font-weight: 600;
+    text-decoration: underline dotted #ff99cc;
+}
+
+/* Cute Cat Button */
+.cat-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #ff69b4, #ff99cc);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+    margin: 20px auto; /* Center the button */
+    position: relative;
+    overflow: hidden;
+}
+
+.cat-btn::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 40px;
+    height: 40px;
+    background: url('https://cdn-icons-png.flaticon.com/512/3219/3219842.png') no-repeat center; /* Cute cat icon */
+    background-size: contain;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.cat-btn:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(45deg, #ff99cc, #ff69b4);
+}
+
+.cat-btn:hover::before {
+    opacity: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design for Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    #secret-note {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .note-content {
+        padding: 15px;
+        margin: 15px auto;
+        max-width: 100%;
+        width: 90%;
+        font-size: 1rem;
+    }
+
+    .cat-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        margin: 15px auto;
+    }
+
+    .cat-btn::before {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Extra small screens (phones < 480px) */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .note-content {
+        font-size: 0.9rem;
+    }
+
+    .cat-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .cat-btn::before {
+        width: 25px;
+        height: 25px;
+    }
+}
