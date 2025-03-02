@@ -1,0 +1,353 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffddf1, #ff99cc);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.paper-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px;
+    position: relative;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.paper-stack {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.paper-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+    background: url('https://www.transparenttextures.com/patterns/paper.png') repeat;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    z-index: 0;
+}
+
+/* Stacking order */
+.paper-page[data-page="1"] { z-index: 10; }
+.paper-page[data-page="2"] { z-index: 9; }
+.paper-page[data-page="3"] { z-index: 8; }
+.paper-page[data-page="4"] { z-index: 7; }
+.paper-page[data-page="5"] { z-index: 6; }
+.paper-page[data-page="6"] { z-index: 5; }
+.paper-page[data-page="7"] { z-index: 4; }
+.paper-page[data-page="8"] { z-index: 3; }
+.paper-page[data-page="9"] { z-index: 2; }
+.paper-page[data-page="10"] { z-index: 1; }
+
+/* Initial state */
+.paper-page {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: none;
+}
+
+.paper-page[data-page="1"] {
+    pointer-events: auto;
+}
+
+/* Slide down animation */
+.paper-page.slide-down {
+    transform: translateY(100vh);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Headings */
+h1 {
+    color: #ff69b4;
+    text-shadow: 1px 1px 4px rgba(255, 105, 180, 0.2);
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #ff1493;
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin: 15px 0 10px;
+    position: relative;
+}
+
+h2::before {
+    content: '✿';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff69b4;
+    font-size: 1rem;
+}
+
+/* Paragraphs */
+p {
+    color: #ff1493;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 10px 0;
+    max-width: 90%;
+}
+
+/* Images and Video */
+.paper-image {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 10px;
+    margin: 10px 0;
+    transition: transform 0.3s ease;
+}
+
+.paper-image:hover {
+    transform: scale(1.05);
+}
+
+.polaroid {
+    border: 6px solid white;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transform: rotate(2deg);
+}
+
+/* Smaller Images for Third Gift */
+.small-image-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.small-image {
+    max-width: 150px;
+}
+
+/* Cute Cat Button */
+.cat-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff69b4, #ff99cc);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+    margin-top: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cat-btn::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 35px;
+    height: 35px;
+    background: url('https://cdn-icons-png.flaticon.com/512/3219/3219842.png') no-repeat center;
+    background-size: contain;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.cat-btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #ff99cc, #ff69b4);
+    animation: bounce 0.5s ease infinite alternate;
+}
+
+.cat-btn:hover::before {
+    opacity: 1;
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+    position: absolute;
+    bottom: 20px; /* Positioned at bottom of each page */
+    background: rgba(255, 105, 180, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.nav-arrow:hover {
+    background: rgba(255, 105, 180, 1);
+    transform: scale(1.1);
+}
+
+.prev-arrow {
+    left: 20px;
+}
+
+.next-arrow {
+    right: 20px;
+}
+
+/* Animations */
+@keyframes bounce {
+    from { transform: scale(1.1); }
+    to { transform: scale(1.15); }
+}
+
+/* Responsive Design for Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .paper-container {
+        margin: 15px;
+        max-width: 90%;
+        height: 80vh;
+    }
+
+    .paper-stack {
+        height: 100%; /* Full height, arrows inside pages */
+    }
+
+    .paper-page {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    h2::before {
+        left: -15px;
+        font-size: 0.9rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    .paper-image {
+        max-width: 200px;
+    }
+
+    .small-image {
+        max-width: 120px;
+    }
+
+    .cat-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .cat-btn::before {
+        width: 30px;
+        height: 30px;
+    }
+
+    .nav-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+        bottom: 15px;
+    }
+
+    .prev-arrow {
+        left: 15px;
+    }
+
+    .next-arrow {
+        right: 15px;
+    }
+}
+
+/* Extra small screens (phones < 480px) */
+@media screen and (max-width: 480px) {
+    .paper-container {
+        height: 75vh;
+    }
+
+    .paper-page {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    h2::before {
+        left: -12px;
+        font-size: 0.8rem;
+    }
+
+    p {
+        font-size: 0.85rem;
+    }
+
+    .paper-image {
+        max-width: 180px;
+    }
+
+    .small-image {
+        max-width: 100px;
+    }
+
+    .caption {
+        font-size: 0.75rem;
+    }
+
+    .cat-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    .cat-btn::before {
+        width: 25px;
+        height: 25px;
+    }
+
+    .nav-arrow {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+        bottom: 10px;
+    }
+
+    .prev-arrow {
+        left: 10px;
+    }
+
+    .next-arrow {
+        right: 10px;
+    }
+}

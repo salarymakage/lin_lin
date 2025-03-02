@@ -5,6 +5,7 @@ body {
     background: linear-gradient(135deg, #ffe6f0, #ff99cc);
     min-height: 100vh;
     color: #333;
+    overscroll-behavior: none; /* Prevents unwanted scrolling bounce */
 }
 
 /* Default styles (desktop) */
@@ -23,12 +24,12 @@ body {
 }
 
 .top-image {
-    width: 400px; /* Larger square container width */
-    height: 400px; /* Larger square container height (1:1 aspect ratio) */
-    border-radius: 15px; /* Slightly rounded corners for a cute look */
+    width: 400px;
+    height: 400px;
+    border-radius: 15px;
     border: 3px solid #ff69b4;
-    object-fit: cover; /* Crops the image to fit the container while maintaining aspect ratio */
-    object-position: center; /* Centers the crop */
+    object-fit: cover;
+    object-position: center;
 }
 
 h1 {
@@ -39,6 +40,8 @@ h1 {
 
 .keypad-section {
     margin: 20px 0;
+    -webkit-user-select: none; /* Prevent text selection on touch */
+    user-select: none;
 }
 
 #pin-display {
@@ -49,52 +52,75 @@ h1 {
 
 .keypad {
     display: grid;
-    grid-template-columns: repeat(3, 60px);
-    gap: 10px;
+    grid-template-columns: repeat(3, 80px); /* Larger for smoother touch */
+    gap: 14px; /* Increased gap for finger separation */
     justify-content: center;
     margin-bottom: 15px;
 }
 
 .key {
-    width: 60px;
-    height: 60px;
+    width: 80px; /* Larger touch target */
+    height: 80px; /* Larger touch target */
     border: 2px solid #ff69b4;
-    border-radius: 50%; /* Circular buttons like in your image */
+    border-radius: 50%;
     background-color: white;
     color: #ff69b4;
-    font-size: 1.5rem;
+    font-size: 2rem; /* Larger font for visibility */
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
+    transition: transform 0.1s ease, background-color 0.1s ease; /* Faster, smoother transitions */
+    touch-action: manipulation; /* No tap delay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent; /* Remove default tap highlight */
+}
+
+.key:active {
+    transform: scale(0.95); /* Subtle press feedback */
+    background-color: #ff69b4; /* Immediate color change */
+    color: white;
 }
 
 .key:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Keep hover for desktop */
     background-color: #ff69b4;
     color: white;
+}
+
+.spacer {
+    width: 80px; /* Match key width */
+    height: 80px; /* Match key height for grid alignment */
 }
 
 .button-row {
     display: flex;
     justify-content: center;
-    gap: 15px; /* Space between Clear and Enter buttons */
+    gap: 15px;
     margin-top: 10px;
 }
 
 .clear-btn, .enter-btn {
-    padding: 10px 20px;
+    padding: 14px 28px; /* Larger for smoother touch */
     background-color: #ff69b4;
     border: none;
     border-radius: 15px;
     color: white;
-    font-size: 1rem;
+    font-size: 1.2rem; /* Slightly larger font */
     cursor: pointer;
-    transition: transform 0.2s;
-    text-decoration: none; /* Remove default link underline for .enter-btn */
-    display: inline-block; /* Ensure .enter-btn behaves like a button */
+    transition: transform 0.1s ease, background-color 0.1s ease; /* Faster transitions */
+    text-decoration: none;
+    display: inline-block;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
+}
+
+.clear-btn:active, .enter-btn:active {
+    transform: scale(0.95); /* Press feedback */
+    background-color: #ff4d94; /* Slightly darker on press */
 }
 
 .clear-btn:hover, .enter-btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Keep hover for desktop */
 }
 
 /* Media Query for Mobile (max-width: 768px) */
@@ -111,9 +137,9 @@ h1 {
     }
 
     .top-image {
-        width: 100%; /* Full width of container on mobile */
-        height: 100%; /* Maintain 1:1 aspect ratio */
-        max-width: 300px; /* Cap to prevent overflow */
+        width: 100%;
+        height: 100%;
+        max-width: 300px;
         max-height: 300px;
     }
 
@@ -122,24 +148,29 @@ h1 {
     }
 
     .keypad {
-        grid-template-columns: repeat(3, 50px); /* Smaller buttons for mobile */
-        gap: 8px;
+        grid-template-columns: repeat(3, 65px); /* Touch-friendly size for mobile */
+        gap: 12px;
     }
 
     .key {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
+        width: 65px;
+        height: 65px;
+        font-size: 1.8rem;
+    }
+
+    .spacer {
+        width: 65px;
+        height: 65px;
     }
 
     .button-row {
-        flex-direction: row; /* Ensure buttons stay side by side on mobile */
-        gap: 10px; /* Slightly smaller gap on mobile */
+        flex-direction: row;
+        gap: 10px;
     }
 
     .clear-btn, .enter-btn {
-        padding: 8px 16px;
-        font-size: 0.9rem;
+        padding: 12px 24px;
+        font-size: 1.1rem;
     }
 
     #pin-display {

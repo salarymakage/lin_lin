@@ -1,11 +1,11 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif; /* Modern, clean font */
-    background: linear-gradient(135deg, #ffddf1, #ff99cc); /* Softer, modern pink gradient */
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffddf1, #ff99cc);
     min-height: 100vh;
     color: #333;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden;
 }
 
 /* Secret note container */
@@ -18,15 +18,35 @@ body {
 
 /* Headings */
 h1 {
-    color: #ff69b4; /* Bright pink for a cute, modern look */
+    color: #ff69b4;
     text-shadow: 1px 1px 4px rgba(255, 105, 180, 0.3);
     font-weight: 600;
     font-size: 2.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     animation: fadeIn 1.5s ease-in-out;
 }
 
-/* Note content */
+h2 {
+    color: #ff1493;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin: 20px 0 15px;
+    position: relative;
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: url('https://cdn-icons-png.flaticon.com/512/3069/3069171.png') no-repeat center;
+    background-size: contain;
+    transform: translateY(-50%);
+}
+
+/* Continuous note content */
 .note-content {
     background: rgba(255, 255, 255, 0.95);
     padding: 25px;
@@ -45,10 +65,69 @@ h1 {
     transform: translateY(-5px);
 }
 
+.note-section {
+    margin-bottom: 20px; /* Space between sections inside the block */
+}
+
 .note-content strong {
     color: #ff69b4;
     font-weight: 600;
     text-decoration: underline dotted #ff99cc;
+}
+
+.note-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.note-content li {
+    margin: 10px 0;
+    position: relative;
+    padding-left: 25px;
+}
+
+.note-content li::before {
+    content: '✨';
+    position: absolute;
+    left: 0;
+    color: #ff69b4;
+}
+
+/* Divider between sections */
+.divider {
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #ff99cc, transparent);
+    margin: 20px auto;
+    opacity: 0.8;
+}
+
+/* Images */
+.note-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 15px;
+    margin: 15px auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.note-image:hover {
+    transform: scale(1.05);
+}
+
+.polaroid {
+    border: 8px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: rotate(2deg);
+}
+
+.caption {
+    font-size: 0.9rem;
+    color: #ff69b4;
+    text-align: center;
+    margin-top: 5px;
+    font-style: italic;
 }
 
 /* Cute Cat Button */
@@ -65,7 +144,7 @@ h1 {
     cursor: pointer;
     transition: transform 0.3s ease, background 0.3s ease;
     box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
-    margin: 20px auto; /* Center the button */
+    margin: 20px auto;
     position: relative;
     overflow: hidden;
 }
@@ -77,25 +156,58 @@ h1 {
     left: -10px;
     width: 40px;
     height: 40px;
-    background: url('https://cdn-icons-png.flaticon.com/512/3219/3219842.png') no-repeat center; /* Cute cat icon */
+    background: url('https://cdn-icons-png.flaticon.com/512/3219/3219842.png') no-repeat center;
     background-size: contain;
     opacity: 0.7;
     transition: opacity 0.3s ease;
 }
 
 .cat-btn:hover {
-    transform: translateY(-3px);
+    transform: scale(1.1);
     background: linear-gradient(45deg, #ff99cc, #ff69b4);
+    animation: bounce 0.5s ease infinite alternate;
 }
 
 .cat-btn:hover::before {
     opacity: 1;
 }
 
+/* Click Me Button */
+.click-me-btn {
+    display: block; /* Changed to block for centering */
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff1493, #ff69b4);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 8px rgba(255, 20, 147, 0.2);
+    margin: 15px auto; /* Centered with auto margins */
+    width: fit-content; /* Keeps button width snug to content */
+}
+
+.click-me-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 12px rgba(255, 20, 147, 0.3);
+}
+
+.click-me-btn:active {
+    transform: scale(0.98); /* Slight press effect */
+}
+
 /* Animations */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+    from { transform: scale(1.1); }
+    to { transform: scale(1.15); }
 }
 
 /* Responsive Design for Mobile (max-width: 768px) */
@@ -108,6 +220,16 @@ h1 {
         font-size: 2rem;
     }
 
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h2::before {
+        width: 18px;
+        height: 18px;
+        left: -25px;
+    }
+
     .note-content {
         padding: 15px;
         margin: 15px auto;
@@ -116,15 +238,27 @@ h1 {
         font-size: 1rem;
     }
 
+    .note-image {
+        max-width: 250px;
+    }
+
+    .divider {
+        width: 90%;
+    }
+
     .cat-btn {
         padding: 10px 20px;
         font-size: 1rem;
-        margin: 15px auto;
     }
 
     .cat-btn::before {
         width: 30px;
         height: 30px;
+    }
+
+    .click-me-btn {
+        padding: 9px 18px;
+        font-size: 0.9rem;
     }
 }
 
@@ -134,8 +268,26 @@ h1 {
         font-size: 1.8rem;
     }
 
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    h2::before {
+        width: 15px;
+        height: 15px;
+        left: -20px;
+    }
+
     .note-content {
         font-size: 0.9rem;
+    }
+
+    .note-image {
+        max-width: 200px;
+    }
+
+    .divider {
+        width: 85%;
     }
 
     .cat-btn {
@@ -146,5 +298,10 @@ h1 {
     .cat-btn::before {
         width: 25px;
         height: 25px;
+    }
+
+    .click-me-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
     }
 }
