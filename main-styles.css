@@ -1,11 +1,11 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif; /* Modern, clean font */
-    background: linear-gradient(135deg, #ffddf1, #ff99cc); /* Softer, modern pink gradient */
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffddf1, #ff99cc);
     min-height: 100vh;
     color: #333;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden;
 }
 
 /* Main content container */
@@ -18,7 +18,7 @@ body {
 
 /* Headings */
 h1, h2, h3 {
-    color: #ff69b4; /* Bright pink for a cute, modern look */
+    color: #ff69b4;
     text-shadow: 1px 1px 4px rgba(255, 105, 180, 0.3);
     font-weight: 600;
     margin-bottom: 15px;
@@ -69,7 +69,7 @@ h3 {
     justify-content: center;
     gap: 20px;
     margin-top: 20px;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    flex-wrap: wrap;
 }
 
 .timer-item {
@@ -210,7 +210,7 @@ h3 {
     justify-content: center;
     gap: 15px;
     margin-top: 15px;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    flex-wrap: wrap;
 }
 
 .cute-timer-item {
@@ -261,21 +261,27 @@ h3 {
 /* Enhanced Cute Cat Button */
 .cat-btn {
     display: inline-block;
-    padding: 18px 35px; /* Larger padding for a bigger button */
+    padding: 18px 35px;
     background: linear-gradient(45deg, #ff69b4, #ff99cc);
     border: none;
-    border-radius: 30px; /* Slightly larger radius for a softer look */
+    border-radius: 30px;
     color: white;
-    font-size: 1.3rem; /* Larger font size */
+    font-size: 1.3rem;
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
     transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4); /* Larger, more prominent shadow */
-    margin: 30px auto; /* Increased margin for emphasis */
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+    margin: 30px auto;
     position: relative;
     overflow: hidden;
-    animation: bounce 2s infinite ease-in-out; /* Subtle bounce animation */
+    animation: bounce 2s infinite ease-in-out;
+    -webkit-user-select: none; /* Prevent text selection on Webkit browsers */
+    -moz-user-select: none;    /* Prevent text selection on Firefox */
+    -ms-user-select: none;     /* Prevent text selection on Microsoft browsers */
+    user-select: none;         /* Standard property to disable text selection */
+    -webkit-touch-callout: none; /* Disable iOS callout (copy/paste) */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
 }
 
 .cat-btn::before {
@@ -283,23 +289,23 @@ h3 {
     position: absolute;
     top: -15px;
     left: -15px;
-    width: 60px; /* Larger cat icon */
+    width: 60px;
     height: 60px;
-    background: url('https://cdn-icons-png.flaticon.com/512/3219/3219842.png') no-repeat center; /* Cute cat icon */
+    background: url('https://cdn-icons-png.flaticon.com/512/3219/3219842.png') no-repeat center;
     background-size: contain;
     opacity: 0.7;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .cat-btn:hover {
-    transform: translateY(-5px); /* Larger hover lift */
+    transform: translateY(-5px);
     background: linear-gradient(45deg, #ff99cc, #ff69b4);
-    box-shadow: 0 12px 25px rgba(255, 105, 180, 0.6); /* Enhanced shadow on hover */
+    box-shadow: 0 12px 25px rgba(255, 105, 180, 0.6);
 }
 
 .cat-btn:hover::before {
     opacity: 1;
-    transform: scale(1.1); /* Slightly larger cat icon on hover */
+    transform: scale(1.1);
 }
 
 /* Additional Animation for Interest */
@@ -389,13 +395,17 @@ h3 {
     }
 
     .cat-btn {
-        padding: 14px 28px; /* Slightly smaller on mobile but still large */
+        padding: 14px 28px;
         font-size: 1.1rem;
         margin: 20px auto;
+        -webkit-user-select: none; /* Reinforce for mobile */
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .cat-btn::before {
-        width: 40px; /* Smaller cat icon on mobile */
+        width: 40px;
         height: 40px;
     }
 }
@@ -438,12 +448,16 @@ h3 {
     }
 
     .cat-btn {
-        padding: 12px 24px; /* Even smaller on extra-small screens */
+        padding: 12px 24px;
         font-size: 1rem;
+        -webkit-user-select: none; /* Reinforce for extra-small screens */
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .cat-btn::before {
-        width: 30px; /* Smaller cat icon on extra-small screens */
+        width: 30px;
         height: 30px;
     }
 }

@@ -66,7 +66,7 @@ h2::before {
 }
 
 .note-section {
-    margin-bottom: 20px; /* Space between sections inside the block */
+    margin-bottom: 20px;
 }
 
 .note-content strong {
@@ -147,6 +147,12 @@ h2::before {
     margin: 20px auto;
     position: relative;
     overflow: hidden;
+    -webkit-user-select: none; /* Prevent text selection on Webkit browsers */
+    -moz-user-select: none;    /* Prevent text selection on Firefox */
+    -ms-user-select: none;     /* Prevent text selection on Microsoft browsers */
+    user-select: none;         /* Standard property to disable text selection */
+    -webkit-touch-callout: none; /* Disable iOS callout (copy/paste) */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
 }
 
 .cat-btn::before {
@@ -174,7 +180,7 @@ h2::before {
 
 /* Click Me Button */
 .click-me-btn {
-    display: block; /* Changed to block for centering */
+    display: block;
     padding: 10px 20px;
     background: linear-gradient(45deg, #ff1493, #ff69b4);
     border: none;
@@ -186,8 +192,14 @@ h2::before {
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 3px 8px rgba(255, 20, 147, 0.2);
-    margin: 15px auto; /* Centered with auto margins */
-    width: fit-content; /* Keeps button width snug to content */
+    margin: 15px auto;
+    width: fit-content;
+    -webkit-user-select: none; /* Prevent text selection on Webkit browsers */
+    -moz-user-select: none;    /* Prevent text selection on Firefox */
+    -ms-user-select: none;     /* Prevent text selection on Microsoft browsers */
+    user-select: none;         /* Standard property to disable text selection */
+    -webkit-touch-callout: none; /* Disable iOS callout (copy/paste) */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
 }
 
 .click-me-btn:hover {
@@ -196,7 +208,7 @@ h2::before {
 }
 
 .click-me-btn:active {
-    transform: scale(0.98); /* Slight press effect */
+    transform: scale(0.98);
 }
 
 /* Animations */
@@ -249,6 +261,10 @@ h2::before {
     .cat-btn {
         padding: 10px 20px;
         font-size: 1rem;
+        -webkit-user-select: none; /* Reinforce for mobile */
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .cat-btn::before {
@@ -259,6 +275,10 @@ h2::before {
     .click-me-btn {
         padding: 9px 18px;
         font-size: 0.9rem;
+        -webkit-user-select: none; /* Reinforce for mobile */
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
     }
 }
 
@@ -293,6 +313,10 @@ h2::before {
     .cat-btn {
         padding: 8px 16px;
         font-size: 0.9rem;
+        -webkit-user-select: none; /* Reinforce for extra-small screens */
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .cat-btn::before {
@@ -303,5 +327,9 @@ h2::before {
     .click-me-btn {
         padding: 8px 16px;
         font-size: 0.85rem;
+        -webkit-user-select: none; /* Reinforce for extra-small screens */
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
     }
 }
